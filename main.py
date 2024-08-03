@@ -1,10 +1,8 @@
-print("test")
+import fastapi
 
-# for loop to print 1 to 10
-for i in range(1, 11):
-    print(i)
+app = fastapi.FastAPI()
 
-
-# getname from user and print it
-name = input("Enter your name: ")
-print(f"Hello {name}")
+@app.post("/return_name")
+def read_root(data: dict):
+    name = data.get("name")
+    return {"name": name}
